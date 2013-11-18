@@ -1,0 +1,10 @@
+{
+  "name": "json2css-sprite-mixins",
+  "version": "0.1.0",
+  "main": "_json2css_sprite_mixins.sass",
+  "ignore": [
+    "*.json",
+    "*.md"
+  ],
+  "keywords": ["json2css", "sprite", "spriting", "spritesmith", "grunt-spritesmith"]
+}
