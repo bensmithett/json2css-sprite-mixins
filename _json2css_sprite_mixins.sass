@@ -17,3 +17,19 @@
   @include sprite-position($sprite)
   @include sprite-width($sprite)
   @include sprite-height($sprite)
+
+// Retina sprite mixin via https://github.com/Ensighten/spritesmith/issues/19#issuecomment-24843826
+@mixin sprite-2x($sprite1x, $sprite2x)
+  +sprite($sprite1x)
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.5), screen and (min-device-pixel-ratio: 1.5)
+    // Use the 2x image...
+    +sprite-image($sprite2x)
+
+    // ...but set background-size to the size of the 1x image...
+    background-size: nth($sprite1x, 7) nth($sprite1x, 8)
+
+    // ...so you can use 1x dimensions & position!
+    +sprite-position($sprite1x)
+    +sprite-height($sprite1x)
+    +sprite-width($sprite1x)
