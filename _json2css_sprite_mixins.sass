@@ -4,10 +4,10 @@
 @mixin sprite-height($sprite)
   height: nth($sprite, 6)
 
-@mixin sprite-position($sprite)
-  $sprite-offset-x: nth($sprite, 3)
-  $sprite-offset-y: nth($sprite, 4)
-  background-position: $sprite-offset-x  $sprite-offset-y
+@mixin sprite-position($sprite, $extra-offset-x: 0, $extra-offset-y: 0)
+  $sprite-offset-x: nth($sprite, 3) + $extra-offset-x
+  $sprite-offset-y: nth($sprite, 4) + $extra-offset-y
+  background-position: $sprite-offset-x $sprite-offset-y
 
 @mixin sprite-image($sprite)
   background-image: image-url(nth($sprite, 9))
