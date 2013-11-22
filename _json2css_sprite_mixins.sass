@@ -18,7 +18,14 @@
   @include sprite-width($sprite)
   @include sprite-height($sprite)
 
-// Retina sprite mixin via https://github.com/Ensighten/spritesmith/issues/19#issuecomment-24843826
+
+
+///////////////////////////////////////////////////
+// R E T I N A !
+///////////////////////////////////////////////////
+
+// Shorthand retina sprite mixin 
+// via https://github.com/Ensighten/spritesmith/issues/19#issuecomment-24843826
 @mixin sprite-2x($sprite1x, $sprite2x)
   +sprite($sprite1x)
 
@@ -33,3 +40,14 @@
     +sprite-position($sprite1x)
     +sprite-height($sprite1x)
     +sprite-width($sprite1x)
+
+
+// Set retina background-image only
+// Once this is set you can use the position, height & width mixins individually with 1x values
+// (e.g. if you only want to set a new background-position on hover, don't need to re-set background-image)
+@mixin sprite-2x-image($sprite1x, $sprite2x)
+  +sprite-image($sprite1x)
+
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)
+    +sprite-image($sprite2x)
+    background-size: nth($sprite1x, 7) nth($sprite1x, 8)
